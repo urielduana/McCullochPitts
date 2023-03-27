@@ -1,4 +1,4 @@
-import McCullochPitts.McCullochPitts as m
+import McCullochPitts as m
 
 mp = m.McCullochPitts(2, "AND", 100)
 

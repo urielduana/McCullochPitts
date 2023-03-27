@@ -22,8 +22,9 @@ class McCullochPitts:
 # and it is done until the neuron is able to perform the desired logic gate
     def train(self):
         if self.gate == "NOT" and self.n_bits != 1:
-            print("NOT gate only works with 1 bit")
+            print("NOT gate only works with 1 bit.")
             return SystemExit
+        
         for ep in range(self.epoch):
             for input, expected_output in self.truth_table():
                 obtained_output = self.activation(input)
@@ -32,9 +33,12 @@ class McCullochPitts:
                     self.threshold += sign
                     self.weights = [weight + sign * input[i]
                                     for i, weight in enumerate(self.weights)]
-        print(f"SUCCESSFUL TRAINING IN EPOCH: {ep}")
-        print(f"Threshold value = {self.threshold}")
-        print(f"Weights value = {self.weights}")
+        
+        print(f"Training successful in {self.epoch} epochs.")
+        print("------------------------------------")
+        print(f"Threshold value: {self.threshold}")
+        print(f"Weight values: {self.weights}")
+
 
 
 # Evaluate function - evaluates the neuron with the given input
@@ -47,6 +51,8 @@ class McCullochPitts:
         expected_output = bool(self.truth_table()[int("".join(str(i) for i in input), 2)][1])
         print(f'Expected output: {expected_output}')
         print(f'Obtained output: {output}')
+        print("------------------------------------")
+    
         return output == expected_output
 
 # Truth table function - returns the truth table of the desired logic gate
@@ -71,3 +77,5 @@ class McCullochPitts:
             obtained_output = self.activation(input)
             expected_output = bool(expected_output)
             print(f"{input}:{obtained_output == expected_output}")
+        print("------------------------------------")
+            
