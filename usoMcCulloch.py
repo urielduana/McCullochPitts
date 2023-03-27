@@ -1,6 +1,6 @@
 import McCullochPitts as m
 
-mp = m.McCullochPitts(2, "AND", 100)
+mp = m.McCullochPitts(2, "OR", 100)
 
 mp.train()
 
